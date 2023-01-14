@@ -45,7 +45,11 @@ process {
         $hashInfo = Get-FileHash -InputStream ([System.IO.MemoryStream]::new($hashesBytes))
 
         # Write the hash to the file in the format for actions/cache
-        $hashInfo.Hash.Substring(0, 8).ToLower() | Tee-Object -FilePath $outputFilepath
+        $hash = $hashInfo.Hash.Substring(0, 8).ToLower()
+
+        # Output
+        $hash
+        $hash > $outputFilepath
     }
 }
 
