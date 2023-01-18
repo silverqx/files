@@ -15,17 +15,17 @@ begin {
 
 process {
     foreach ($platform_ in $Platform) {
-        [string] $filesPath = $null
+        [string[]] $filesPath = $null
         [string] $outputFilepath = $null
 
         # Prepare files glob and output file
         switch -Exact ($platform_) {
             'Linux' {
-                $filesPath = '*.bz2'
+                $filesPath = $('*.bz2', '*.xz')
                 $outputFilepath = './hashes/Linux.txt'
             }
             'Windows' {
-                $filesPath = '*.7z'
+                $filesPath = $('*.7z')
                 $outputFilepath = './hashes/Windows.txt'
             }
             Default {
@@ -48,8 +48,8 @@ process {
         $hash = $hashInfo.Hash.Substring(0, 8).ToLower()
 
         # Output
-        $hash
-        $hash > $outputFilepath
+        Write-Output $hash
+        $hash | Out-File -Path $outputFilepath -NoNewline
     }
 }
 
