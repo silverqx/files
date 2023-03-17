@@ -59,7 +59,7 @@ process {
 
  .Description
   The `Get-DownloadsHash` calculates a SHA-256 hash for the set of files by the given
-  Platform. It matches all `*.7z` files for `Windows` platform and `*.bz2` for `Linux`
+  Platform. It matches all `*.7z` files for `Windows` platform and `*.bz2` and `*.xz` for `Linux`
   in the current folder. Computed hashes are sent to the stdout and
   to the `hashes/{Windows,Linux}.txt` files.
 
