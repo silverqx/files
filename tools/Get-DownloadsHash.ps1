@@ -39,6 +39,16 @@ process {
                   Select-Object -ExpandProperty Hash |
                   Out-String -NoNewline
 
+        # Nothing to do, no files to hash so the file isn't needed anymore
+        if ($hashes -eq '') {
+            if (Test-Path $outputFilepath) {
+                Remove-Item -Path $outputFilepath
+            }
+
+            Write-Output 'skipping'
+            continue
+        }
+
         # Calculate a final SHA-256 hash for the set of files
         $hashesBytes = [System.Text.Encoding]::UTF8.GetBytes($hashes)
 
