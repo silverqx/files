@@ -1,3 +1,7 @@
+# Deprecated 🙌
+
+This project isn't needed anymore after the Qt v5.15 was dropped.
+
 # Files used in the TinyORM GitHub actions
 
 Regenerating hashes is needed after any archive upgrade. Change directory to the repository root and invoke:
